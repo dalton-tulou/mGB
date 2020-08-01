@@ -5,7 +5,7 @@ OBJ=./obj
 
 build:
 	mkdir -p $(OBJ)
-	$(BIN)/gbdk-n-compile.sh mgb_save.c -o $(OBJ)/mgb_save.rel -Wa-l -ba0
+	$(BIN)/gbdk-n-compile.sh mgb_save.c -o $(OBJ)/mgb_save.rel -Wa-l
 
 	$(BIN)/gbdk-n-assemble.sh $(OBJ)/mGBASMFunctions.rel mGBASMFunctions.s
 	$(BIN)/gbdk-n-assemble.sh $(OBJ)/mGBASMSynthFunctions.rel mGBASMSynthFunctions.s
@@ -15,7 +15,7 @@ build:
 
 	$(BIN)/gbdk-n-link.sh $(OBJ)/mgb.rel $(OBJ)/mgb_save.rel $(OBJ)/mGBASMFunctions.rel $(OBJ)/mGBASMSynthFunctions.rel $(OBJ)/mGBASMMidiFunctions.rel -o $(OBJ)/mgb.ihx
 
-	$(BIN)/gbdk-n-make-rom.sh -yn "MGB" -ya 1 -yc $(OBJ)/mgb.ihx mgb.gb
+	$(BIN)/gbdk-n-make-rom.sh -yn "MGB" -yc $(OBJ)/mgb.ihx mgb.gb
 
 clean:
 	rm -rf $(OBJ)
